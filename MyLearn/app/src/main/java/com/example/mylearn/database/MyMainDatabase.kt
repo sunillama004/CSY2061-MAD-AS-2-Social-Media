@@ -10,17 +10,17 @@ import com.example.mylearn.entity.Mycomment// Mycomment calling
 import com.example.mylearn.entity.Mypost// Mypost calling
 import com.example.mylearn.entity.Myuser// Myuser calling
 //(Stevdza-San, 2020)
-@Database(entities = [Myuser::class, Mypost::class, Mycomment::class], version = 5, exportSchema = false)
-abstract class MyDatabase : RoomDatabase() {
+@Database(entities = [Myuser::class, Mypost::class, Mycomment::class], version = 7, exportSchema = false)
+abstract class MyMainDatabase : RoomDatabase() {
     abstract fun myuserDao(): MyuserDao//creating the abstract fun of MyuserDao
     abstract fun mypostDao(): MypostDao//creating the abstract fun of MypostDao
     abstract fun mycommentDao(): MycommentDao//creating the abstract fun of MycommentDao
     companion object {
         @Volatile
-        private var Instance: MyDatabase? = null
-        fun getDatabase(context: Context): MyDatabase {
+        private var Instance: MyMainDatabase? = null
+        fun getMyMainDatabase(context: Context): MyMainDatabase {
             return Instance ?: synchronized(this) {
-                Room.databaseBuilder(context, MyDatabase::class.java, "my_database") // database name
+                Room.databaseBuilder(context, MyMainDatabase::class.java, "my_database") // database name
                     .fallbackToDestructiveMigration() // for handle without migrations
                     .build()//creating database and initializing
                     .also { Instance = it }

@@ -43,7 +43,7 @@ fun MyAddPostScreen(postRepository: MypostsRepositoryInterface, myloggedInUser: 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(18.5.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -53,7 +53,7 @@ fun MyAddPostScreen(postRepository: MypostsRepositoryInterface, myloggedInUser: 
             label = { Text("Content") },
             modifier = Modifier.fillMaxWidth()
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(18.5.dp))
         Button(onClick = {
             val newPost = Mypost(
                 postby_name = myloggedInUser.u_name,

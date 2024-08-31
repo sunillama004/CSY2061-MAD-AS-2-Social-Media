@@ -75,17 +75,17 @@ class AllPostActivity : ComponentActivity() {
         }
     }
     private fun myaddComments(post: Mypost) {
-        val intent = Intent(this, AddCommentActivity::class.java)
-        intent.putExtra("postId", post.id_post)
-        startActivity(intent)
+        val myintent = Intent(this, AddCommentActivity::class.java)
+        myintent.putExtra("postId", post.id_post)
+        startActivity(myintent)
     }
     private fun myaddPosts() {
-        val intent = Intent(this, MypostAddActivity::class.java)
-        startActivity(intent)
+        val myintent = Intent(this, MypostAddActivity::class.java)
+        startActivity(myintent)
     }
     private fun myuserPosts() {
-        val intent = Intent(this, UserEditPostActivity::class.java)
-        startActivity(intent)
+        val myintent = Intent(this, UserEditPostActivity::class.java)
+        startActivity(myintent)
     }
 }
 //(Jeff Atwood and Joel Spolsky, 2008)
@@ -170,7 +170,7 @@ fun MyHomeScreens(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(18.5.dp)
     ) {
         MyHeaderViews(
             titles = "Post Lists",
@@ -178,11 +178,11 @@ fun MyHomeScreens(
             myuserPosts = myuserPosts,
             userId = myuserId
         )
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(10.5.dp))
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+            contentPadding = PaddingValues(18.5.dp),
+            verticalArrangement = Arrangement.spacedBy(10.5.dp)
         ) {
             items(myposts) { newpost ->
                 val mypostComments = mycomments.filter { it.id_post == newpost.id_post }
@@ -209,12 +209,12 @@ fun MyPostItems(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
-        elevation = CardDefaults.cardElevation(4.dp)
+            .padding(10.5.dp),
+        elevation = CardDefaults.cardElevation(6.5.dp)
     ) {
         Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            modifier = Modifier.padding(18.5.dp),
+            verticalArrangement = Arrangement.spacedBy(18.5.dp)
         ) {
             Text(text = "Posted by: ${mypost.postby_name}", fontWeight = FontWeight.Bold)
             Text(text = mypost.post_content)
@@ -243,7 +243,7 @@ fun MyPostItems(
             } else {
                 Column {
                     mycomments.forEach { comment ->
-                        Text(text = "${comment.cmtby_name}: ${comment.cmt_content}", modifier = Modifier.padding(vertical = 4.dp))
+                        Text(text = "${comment.cmtby_name}: ${comment.cmt_content}", modifier = Modifier.padding(vertical = 6.5.dp))
                     }
                 }
             }
@@ -269,7 +269,7 @@ fun MyHeaderViews(
         modifier = Modifier
             .fillMaxWidth()
             .background(color = MaterialTheme.colorScheme.primary)
-            .padding(16.dp)
+            .padding(18.5.dp)
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -278,13 +278,13 @@ fun MyHeaderViews(
             IconButton(onClick = { myleftButton() }) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Add", tint = Color.White)
             }
-            Spacer(modifier = Modifier.weight(1f))
+            Spacer(modifier = Modifier.weight(2.5f))
             Text(
                 text = titles,
                 color = Color.White,
-                fontSize = 20.sp
+                fontSize = 21.5.sp
             )
-            Spacer(modifier = Modifier.weight(1f))
+            Spacer(modifier = Modifier.weight(2.5f))
             Box {
                 IconButton(onClick = { myexpanded = true }) {
                     Icon(imageVector = Icons.Default.Person, contentDescription = "Profile", tint = Color.White)
@@ -297,19 +297,19 @@ fun MyHeaderViews(
                     if (myloggedInUser != null) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.padding(16.dp)
+                            modifier = Modifier.padding(18.5.dp)
                         ) {
                             Icon(imageVector = Icons.Default.Person, contentDescription = "User Icon", tint = Color.Gray)
-                            Spacer(modifier = Modifier.width(8.dp))
+                            Spacer(modifier = Modifier.width(10.5.dp))
                             Text(text = myloggedInUser.u_name, fontWeight = FontWeight.Bold)
                         }
                         DropdownMenuItem(
                             text = { Text("Edit Profile") },
                             onClick = {
                                 myexpanded = false
-                                val intent = Intent(mycontext, EditProfileActivity::class.java)
-                                intent.putExtra("userid", userId)
-                                mycontext.startActivity(intent)
+                                val myintent = Intent(mycontext, EditProfileActivity::class.java)
+                                myintent.putExtra("userid", userId)
+                                mycontext.startActivity(myintent)
                             }
                         )
                         DropdownMenuItem(
@@ -323,13 +323,13 @@ fun MyHeaderViews(
                             text = { Text("Logout") },
                             onClick = {
                                 (mycontext.applicationContext as MyRoomApplication).do_logout()
-                                val intent = Intent(mycontext, MyLoginActivity::class.java)
-                                mycontext.startActivity(intent)
+                                val myintent = Intent(mycontext, MyLoginActivity::class.java)
+                                mycontext.startActivity(myintent)
                                 myexpanded = false
                             }
                         )
                     } else {
-                        Text("Not logged in", modifier = Modifier.padding(16.dp))
+                        Text("Not logged in", modifier = Modifier.padding(18.5.dp))
                     }
                 }
             }

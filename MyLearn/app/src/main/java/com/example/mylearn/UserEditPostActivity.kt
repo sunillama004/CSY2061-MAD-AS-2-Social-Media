@@ -44,7 +44,7 @@ class UserEditPostActivity : ComponentActivity() {
                         myuserPosts = { },
                         userId = myuserId
                     )
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(18.5.dp))
                     MyMainScreenUsers(
                         mypostRepository = mypostRepository,
                         mycommentRepository = mycommentRepository,
@@ -55,9 +55,9 @@ class UserEditPostActivity : ComponentActivity() {
         }
     }
     private fun myaddComments(post: Mypost) {
-        val intent = Intent(this, AddCommentActivity::class.java)
-        intent.putExtra("postId", post.id_post)
-        startActivity(intent)
+        val myintent = Intent(this, AddCommentActivity::class.java)
+        myintent.putExtra("postId", post.id_post)
+        startActivity(myintent)
     }
 }
 @Composable
@@ -129,7 +129,7 @@ fun MyHomeScreenUsers(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(18.5.dp)
     ) {
         if (myposts.isEmpty()) {
             Text(
@@ -141,8 +141,8 @@ fun MyHomeScreenUsers(
         } else {
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                contentPadding = PaddingValues(18.5.dp),
+                verticalArrangement = Arrangement.spacedBy(10.5.dp)
             ) {
                 items(myposts) { post ->
                     val postComments = mycomments.filter { it.id_post == post.id_post }
@@ -172,12 +172,12 @@ fun MyPostItemUsers(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
-        elevation = CardDefaults.cardElevation(4.dp)
+            .padding(10.5.dp),
+        elevation = CardDefaults.cardElevation(6.5.dp)
     ) {
         Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp) // Space between elements
+            modifier = Modifier.padding(18.5.dp),
+            verticalArrangement = Arrangement.spacedBy(18.5.dp) // Space between elements
         ) {
             Text(text = "Posted by: ${mypost.postby_name}", fontWeight = FontWeight.Bold)
             Text(text = mypost.post_content)
@@ -198,7 +198,7 @@ fun MyPostItemUsers(
                     Text(text = "Likes: ${mypost.post_like}", modifier = Modifier.align(Alignment.CenterVertically))
                 }
                 Row {
-                    IconButton(onClick = {  }) {
+                    IconButton(onClick = {}) {
                         Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
                     }
                     IconButton(onClick = { whenDeletes(mypost) }) {
@@ -213,7 +213,7 @@ fun MyPostItemUsers(
             } else {
                 Column {
                     mycomments.forEach { comment ->
-                        Text(text = "${comment.cmtby_name}: ${comment.cmt_content}", modifier = Modifier.padding(vertical = 4.dp))
+                        Text(text = "${comment.cmtby_name}: ${comment.cmt_content}", modifier = Modifier.padding(vertical = 6.5.dp))
                     }
                 }
             }

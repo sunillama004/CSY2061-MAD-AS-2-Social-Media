@@ -16,15 +16,15 @@ interface MyDatabaseContainer {
 class MyDatabaseDataContainer(private val context: Context) : MyDatabaseContainer {
     // uses lazy initializing for MycommentsRepositoryInterface
     override val MycommentsRepositoryInterface: MycommentsRepositoryInterface by lazy {
-        MycommentsRepository(MyDatabase.getDatabase(context).mycommentDao())
+        MycommentsRepository(MyMainDatabase.getMyMainDatabase(context).mycommentDao())
     }
     // uses lazy initializing for MyusersRepositoryInterface
     override val MyusersRepositoryInterface: MyusersRepositoryInterface by lazy {
-        MyusersRepository(MyDatabase.getDatabase(context).myuserDao())
+        MyusersRepository(MyMainDatabase.getMyMainDatabase(context).myuserDao())
     }
     // uses lazy initializing for MypostsRepositoryInterface
     override val MypostsRepositoryInterface: MypostsRepositoryInterface by lazy {
-        MypostsRepository(MyDatabase.getDatabase(context).mypostDao())
+        MypostsRepository(MyMainDatabase.getMyMainDatabase(context).mypostDao())
     }
 }
 //Stevdza-San (2020) ROOM Database - #2 Insert Data | Android Studio Tutorial. [Online]. Available from: https://www.youtube.com/watch?v=UBCAWfztTrQ&list=PLSrm9z4zp4mEPOfZNV9O-crOhoMa0G2-o&index=3 [Accessed 10 August 2024].

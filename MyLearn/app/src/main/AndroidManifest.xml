@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyLearn"
         tools:targetApi="31">
+        <!-- first lunched Activity -->
+        <activity
+            android:name=".MyLoginActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MyLearn">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- after first Activities -->
         <activity
             android:name=".AddCommentActivity"
             android:exported="false" />
@@ -42,15 +54,5 @@
         <activity
             android:name=".UserEditPostActivity"
             android:exported="false" />
-        <activity
-            android:name=".MyLoginActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.MyLearn">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 </manifest>

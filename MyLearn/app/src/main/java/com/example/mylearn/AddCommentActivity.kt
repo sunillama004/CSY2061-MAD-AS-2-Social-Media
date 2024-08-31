@@ -52,7 +52,7 @@ fun MyAddCommentScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(18.5.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -62,7 +62,7 @@ fun MyAddCommentScreen(
             label = { Text("Comment") },
             modifier = Modifier.fillMaxWidth()
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(18.5.dp))
         Button(onClick = {
             val newComment = Mycomment(
                 cmt_content = mycommentContent,

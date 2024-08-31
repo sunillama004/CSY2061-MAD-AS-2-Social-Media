@@ -22,7 +22,7 @@ interface MyuserDao {
     fun getAllMyusers(): Flow<List<Myuser>>
     // fetching email and password
     @Query("SELECT * FROM myuser_table WHERE u_email = :email AND u_password = :password LIMIT 1")
-    suspend fun getMyUserByEmailAndPassword(email: String, password: String): Myuser?
+    fun getMyUserByEmailAndPassword(email: String, password: String): Myuser?
 }
 //Stevdza-San (2020) ROOM Database - #2 Insert Data | Android Studio Tutorial. [Online]. Available from: https://www.youtube.com/watch?v=UBCAWfztTrQ&list=PLSrm9z4zp4mEPOfZNV9O-crOhoMa0G2-o&index=3 [Accessed 10 August 2024].
 //Stevdza-San (2020) ROOM Database - #4 Update Data | Android Studio Tutorial. [Online]. Available from: https://www.youtube.com/watch?v=5rfBU75sguk&list=PLSrm9z4zp4mEPOfZNV9O-crOhoMa0G2-o&index=4 [Accessed 11 August 2024].

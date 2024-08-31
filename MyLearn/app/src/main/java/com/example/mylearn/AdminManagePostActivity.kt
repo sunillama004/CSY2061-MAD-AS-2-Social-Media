@@ -36,7 +36,7 @@ class AdminManagePostActivity : ComponentActivity() {
                             titles = "Admin-Manage User Posts",
                             ismyAdminLoggedIn = ismyAdminLoggedIn
                         )
-                        Spacer(modifier = Modifier.height(16.dp))
+                        Spacer(modifier = Modifier.height(18.5.dp))
                         MainScreenManagePosts(
                             mypostRepository = mypostRepository,
                             mycommentRepository = mycommentRepository,
@@ -48,9 +48,9 @@ class AdminManagePostActivity : ComponentActivity() {
         }
     }
     private fun myeditPosts(mypost: Mypost) {
-        val intent = Intent(this, EditPostActivity::class.java)
-        intent.putExtra("postId", mypost.id_post)
-        startActivity(intent)
+        val myintent = Intent(this, EditPostActivity::class.java)
+        myintent.putExtra("postId", mypost.id_post)
+        startActivity(myintent)
     }
 }
 //(Stevdza-San, 2020)
@@ -97,13 +97,13 @@ fun AdminsContentManagePosts(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(18.5.dp)
     ) {
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(18.5.dp))
 
         LazyColumn(
-            contentPadding = PaddingValues(bottom = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
+            contentPadding = PaddingValues(bottom = 18.5.dp),
+            verticalArrangement = Arrangement.spacedBy(18.5.dp),
             modifier = Modifier.fillMaxSize()
         ) {
             items(myposts) { mypost ->
@@ -131,32 +131,32 @@ fun MyPostItemManagePosts(
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.5.dp)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(18.5.dp)
         ) {
             Text(text = "Posted by: ${mypost.postby_name}", fontWeight = FontWeight.Bold)
             Text(text = mypost.post_content)
             // showing count likes
             Text(text = "Liked by $mylikedPostsCount people", style = MaterialTheme.typography.bodySmall)
             // showing comments
-            Text(text = "Comments:", fontWeight = FontWeight.Bold, modifier = Modifier.padding(top = 8.dp))
+            Text(text = "Comments:", fontWeight = FontWeight.Bold, modifier = Modifier.padding(top = 10.5.dp))
             if (mycomments.isEmpty()) {
                 Text(text = "No comments yet")
             } else {
                 Column {
                     mycomments.forEach { comment ->
-                        Text(text = "${comment.cmtby_name}: ${comment.cmt_content}", modifier = Modifier.padding(vertical = 4.dp))
+                        Text(text = "${comment.cmtby_name}: ${comment.cmt_content}", modifier = Modifier.padding(vertical = 6.5.dp))
                     }
                 }
             }
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 8.dp),
+                    .padding(top = 10.5.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Button(onClick = myeditPost) {

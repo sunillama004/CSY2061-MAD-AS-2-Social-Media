@@ -34,7 +34,7 @@ class AdminManageActivity : ComponentActivity() {
                             titles = "Admin-Manage Users",
                             ismyAdminLoggedIn = ismyAdminLoggedIn
                         )
-                        Spacer(modifier = Modifier.height(16.dp))
+                        Spacer(modifier = Modifier.height(18.5.dp))
                         MyUsersListScreen(myusersRepository)
                     }
                 }
@@ -81,11 +81,11 @@ fun MyUsersListScreen(usersRepository: MyusersRepositoryInterface) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(18.5.dp)
     ) {
         LazyColumn(
-            contentPadding = PaddingValues(bottom = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            contentPadding = PaddingValues(bottom = 18.5.dp),
+            verticalArrangement = Arrangement.spacedBy(18.5.dp)
         ) {
             items(myusers) { myuser ->
                 MyUserItem(
@@ -102,12 +102,12 @@ fun MyUserItem(myuser: Myuser, whenEdit: () -> Unit, whenDelete: () -> Unit) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.5.dp)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(18.5.dp)
         ) {
             Text(text = "User ID: ${myuser.userid}", fontWeight = FontWeight.Bold)
             Text(text = "Name: ${myuser.u_name}")
@@ -117,7 +117,7 @@ fun MyUserItem(myuser: Myuser, whenEdit: () -> Unit, whenDelete: () -> Unit) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 8.dp),
+                    .padding(top = 10.5.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Button(onClick = whenEdit) {

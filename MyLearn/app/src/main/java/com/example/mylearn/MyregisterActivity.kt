@@ -93,12 +93,12 @@ fun MyRegisterScreen(myregisterAction: (name: String, password: String, email: S
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(18.5.dp),
         contentAlignment = Alignment.Center
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(16.dp),
+            verticalArrangement = Arrangement.spacedBy(18.5.dp),
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentSize()
@@ -172,14 +172,6 @@ fun isMyValidDate(date: String): Boolean {
         format.parse(date) != null
     } catch (e: Exception) {
         false
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun MyRegisterScreenPreview() {
-    MyLearnTheme {
-        MyRegisterScreen { name, password, email, dob ->
-        }
     }
 }
 // Jeff Atwood and Joel Spolsky (2008) stackoverflow. [Online]. Available from:https://stackoverflow.com [Accessed 5 August 2024].

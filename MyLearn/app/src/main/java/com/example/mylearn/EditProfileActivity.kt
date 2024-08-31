@@ -9,10 +9,8 @@ import androidx.compose.material3.*// material3 calling
 import androidx.compose.runtime.*// runtime calling
 import androidx.compose.ui.Alignment// Alignment calling
 import androidx.compose.ui.Modifier// Modifier calling
-import androidx.compose.ui.platform.LocalContext// LocalContext calling
 import androidx.compose.ui.text.input.KeyboardType// KeyboardType calling
 import androidx.compose.ui.text.input.PasswordVisualTransformation// PasswordVisualTransformation calling
-import androidx.compose.ui.tooling.preview.Preview// Preview calling
 import androidx.compose.ui.unit.dp// dp calling
 import androidx.lifecycle.lifecycleScope// lifecycleScope calling
 import com.example.mylearn.database.MyDatabaseDataContainer// MyMyDatabaseDataContainer calling
@@ -21,12 +19,12 @@ import com.example.mylearn.ui.theme.MyLearnTheme// MyLearnTheme calling
 import kotlinx.coroutines.launch// launch calling
 class EditProfileActivity : ComponentActivity() {
     private lateinit var mydatabaseContainer: MyDatabaseDataContainer
-    private var userId: Int = -1
+    private var myuserId: Int = -1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mydatabaseContainer = (application as MyRoomApplication).mydatabaseContainer
-        userId = intent.getIntExtra("userid", -1)
-        if (userId == -1) {
+        myuserId = intent.getIntExtra("userid", -1)
+        if (myuserId == -1) {
             Toast.makeText(this, "Invalid user ID", Toast.LENGTH_SHORT).show()
             finish()
             return
@@ -34,7 +32,7 @@ class EditProfileActivity : ComponentActivity() {
         setContent {
             MyLearnTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MyEditProfileScreen(userId, mydatabaseContainer) { myuser ->
+                    MyEditProfileScreen(myuserId, mydatabaseContainer) { myuser ->
                         myupdateUser(myuser)
                     }
                 }
@@ -59,10 +57,10 @@ class EditProfileActivity : ComponentActivity() {
 }
 //(Stevdza-San, 2020)
 @Composable
-fun MyEditProfileScreen(userId: Int, mydatabaseContainer: MyDatabaseDataContainer, myupdateAction: (Myuser) -> Unit) {
+fun MyEditProfileScreen(myuserId: Int, mydatabaseContainer: MyDatabaseDataContainer, myupdateAction: (Myuser) -> Unit) {
     var myuser by remember { mutableStateOf<Myuser?>(null) }
-    LaunchedEffect(userId) {
-        mydatabaseContainer.MyusersRepositoryInterface.getMyuserStream(userId).collect { myfetchedUser ->
+    LaunchedEffect(myuserId) {
+        mydatabaseContainer.MyusersRepositoryInterface.getMyuserStream(myuserId).collect { myfetchedUser ->
             myuser = myfetchedUser
         }
     }
@@ -78,12 +76,12 @@ fun MyEditProfileScreen(userId: Int, mydatabaseContainer: MyDatabaseDataContaine
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp),
+                .padding(18.5.dp),
             contentAlignment = Alignment.Center
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(16.dp),
+                verticalArrangement = Arrangement.spacedBy(18.5.dp),
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentSize()
@@ -155,15 +153,6 @@ fun MyEditProfileScreen(userId: Int, mydatabaseContainer: MyDatabaseDataContaine
                     Text(text = "Update Profile")
                 }
             }
-        }
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun EditProfileScreenPreview() {
-    MyLearnTheme {
-        // data for preview
-        MyEditProfileScreen(userId = 1, mydatabaseContainer = MyDatabaseDataContainer(LocalContext.current)) { myuser ->
         }
     }
 }

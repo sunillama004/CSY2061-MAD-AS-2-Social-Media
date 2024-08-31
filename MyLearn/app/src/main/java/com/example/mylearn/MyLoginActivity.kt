@@ -1,7 +1,6 @@
 package com.example.mylearn// mylearn package calling
 import android.content.Intent// Intent calling
 import android.os.Bundle// Bundle calling
-import android.util.Log// Log calling
 import android.widget.Toast// Toast calling
 import androidx.activity.ComponentActivity// ComponentActivity calling
 import androidx.activity.compose.setContent// setContent calling
@@ -40,7 +39,8 @@ class MyLoginActivity : ComponentActivity() {
                                     runOnUiThread {
                                         Toast.makeText(this@MyLoginActivity, "Welcome Admin!", Toast.LENGTH_SHORT).show()
                                     }
-                                    startActivity(intent)
+                                    val myintent = Intent(this@MyLoginActivity, AdminDashboardActivity::class.java)//if logged in valid then goto admin-dashboard
+                                    startActivity(myintent)
                                     finish()
                                 } else {
                                     // Checking for user
@@ -50,7 +50,8 @@ class MyLoginActivity : ComponentActivity() {
                                         runOnUiThread {
                                             Toast.makeText(this@MyLoginActivity, "Welcome!", Toast.LENGTH_SHORT).show()
                                         }
-                                        startActivity(intent)
+                                        val myintent = Intent(this@MyLoginActivity, AllPostActivity::class.java)//if logged in valid then goto student-dashboard
+                                        startActivity(myintent)
                                         finish()
                                     } else {
                                         runOnUiThread {
@@ -61,8 +62,8 @@ class MyLoginActivity : ComponentActivity() {
                             }
                         },
                         myregisterAction = {
-                            val intent = Intent(this, MyregisterActivity::class.java)
-                            startActivity(intent)
+                            val myintent = Intent(this, MyregisterActivity::class.java)
+                            startActivity(myintent)
                         }
                     )
                 }
@@ -90,14 +91,14 @@ fun MyLoginScreens(
             contentScale = ContentScale.Crop
         )
         Text(text = "Login", style = MaterialTheme.typography.headlineMedium)
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(18.5.dp))
         TextField(
             value = newemail,
             onValueChange = { newemail = it },
             label = { Text("Email") },
             modifier = Modifier.fillMaxWidth(0.8f)
         )
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(10.5.dp))
         TextField(
             value = newpassword,
             onValueChange = { newpassword = it },
@@ -106,11 +107,11 @@ fun MyLoginScreens(
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             modifier = Modifier.fillMaxWidth(0.8f)
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(18.5.dp))
         Button(onClick = { myloginAction(newemail, newpassword) }, modifier = Modifier.fillMaxWidth(0.8f)) {
             Text("Login")
         }
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(10.5.dp))
         TextButton(onClick = myregisterAction) {
             Text("Register")
         }

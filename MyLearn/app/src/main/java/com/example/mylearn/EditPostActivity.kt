@@ -58,7 +58,7 @@ fun MyEditPostScreens(postRepository: MypostsRepositoryInterface, mypostId: Int,
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp),
+                .padding(18.5.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -68,7 +68,7 @@ fun MyEditPostScreens(postRepository: MypostsRepositoryInterface, mypostId: Int,
                 label = { Text("Content") },
                 modifier = Modifier.fillMaxWidth()
             )
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(18.5.dp))
             Button(onClick = {
                 val myupdatedPost = mypost!!.copy(post_content = mycontent)
                 myscope.launch {
